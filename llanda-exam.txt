@@ -1,0 +1,62 @@
+test 1
+DROP DATABASE student_data;
+CREATE DATABASE student_data;
+
+use student_data;
+
+CREATE TABLE student_info(
+    student_no int PRIMARY KEY AUTO_INCREMENT,
+    student_fname varchar(50),
+    student_lname varchar(50),
+    major varchar(50),
+    gender varchar(50),
+    home_address varchar(50)
+);
+
+CREATE TABLE grade(
+    student_no int,
+    sub_code int PRIMARY KEY AUTO_INCREMENT,
+    grade double,
+    CONSTRAINT FKstudent_info FOREIGN KEY (student_no) REFERENCES student_info(student_no)
+);
+
+CREATE TABLE subject(
+    sub_code int,
+    sub_descr varchar(50),
+    CONSTRAINT FKgrade FOREIGN KEY (sub_code) REFERENCES grade(sub_code)
+);
+
+
+test 2
+DROP DATABASE art_gallery;
+CREATE DATABASE art_gallery;
+
+use art_gallery;
+
+CREATE TABLE art_customer(
+    customer_no int,
+    customer_name varchar(50),
+    address varchar(50),
+    artist_no int PRIMARY KEY AUTO_INCREMENT
+);
+
+CREATE TABLE art_artist(
+    artist_no int,
+    artist_name varchar(50),
+    artist_title varchar(50),
+    artist_description varchar(50),
+    art_prize int,
+    CONSTRAINT FKart_customer FOREIGN KEY (artist_no) REFERENCES art_customer(artist_no)
+);
+
+
+1. SELECT * FROM art_customer WHERE  customer_no and customer_name;
+2. SELECT * FROM art_artist WHERE  artist_no and artist_name;
+3. SELECT * FROM art_artist WHERE  art_prize * .12;
+4. SELECT * FROM art_artist;
+5. SELECT * FROM art_artist WHERE  art_prize and artist_name;
+6. ?
+7. ELECT * FROM art_customer WHERE  customer_no and artist_id;
+
+
+
